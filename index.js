@@ -1,8 +1,13 @@
-// we used fs (core module) to create file
+const http = require("http");
 
-const fs = require('fs');
-fs.writeFileSync("newFile.txt","This is new file created through fs.writeFileSync()")
+http
+  .createServer((req, res) => {
+    //! basic
+    // res.write("hello I am from backend");
 
-// we used directly specific function
-const createFile = require('fs').writeFileSync;
-createFile("newFile2.txt","This is new file created through specific function");
+    //!send html
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.write("<h1>hello I am from</h1>");
+    res.end();
+  })
+  .listen(4500);
