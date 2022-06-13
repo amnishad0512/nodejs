@@ -1,13 +1,9 @@
 const http = require("http");
-
+const data = require("./data.js");
 http
   .createServer((req, res) => {
-    //! basic
-    // res.write("hello I am from backend");
-
-    //!send html
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.write("<h1>hello I am from</h1>");
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.write(JSON.stringify(data));
     res.end();
   })
-  .listen(4500);
+  .listen(8080);
